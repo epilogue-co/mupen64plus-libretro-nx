@@ -1781,7 +1781,7 @@ static void format_saved_memory(void)
 
 void context_reset(void)
 {
-    static bool first_init = true;
+    bool first_init = true;
 
     if(current_rdp_type == RDP_PLUGIN_GLIDEN64)
     {
