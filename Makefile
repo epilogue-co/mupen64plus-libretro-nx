@@ -182,7 +182,7 @@ else ifneq (,$(findstring rpi,$(platform)))
          CPUFLAGS += -march=armv8-a+crc+crypto -mtune=cortex-a76
          ARM_CPUFLAGS = -mfpu=neon-fp-armv8
       endif
-      HAVE_PARALLEL_RSP = 1
+      HAVE_PARALLEL_RSP = 0
       HAVE_THR_AL = 1
       LLE = 1
    else ifneq (,$(findstring rpi,$(platform)))
@@ -229,8 +229,8 @@ else ifeq ($(platform), jetson-xavier)
    CXXFLAGS += -std=gnu++11
    COREFLAGS += -DOS_LINUX
    WITH_DYNAREC = aarch64
-   HAVE_PARALLEL_RSP = 1
-   HAVE_PARALLEL_RDP = 1
+   HAVE_PARALLEL_RSP = 0
+   HAVE_PARALLEL_RDP = 0
    HAVE_THR_AL = 1
    LLE = 1
    COREFLAGS += -ftree-vectorize -ftree-vectorizer-verbose=2 -funsafe-math-optimizations -fno-finite-math-only
@@ -410,8 +410,8 @@ else ifneq (,$(findstring osx,$(platform)))
    # Target Dynarec
    WITH_DYNAREC =
 
-   HAVE_PARALLEL_RSP = 1
-   HAVE_PARALLEL_RDP = 1
+   HAVE_PARALLEL_RSP = 0
+   HAVE_PARALLEL_RDP = 0
    HAVE_THR_AL = 1
    LLE = 1
 
@@ -435,8 +435,8 @@ else ifneq (,$(findstring ios,$(platform)))
    DEFINES += -DIOS
    GLES = 1
 	ifeq ($(platform),ios-arm64)
-		HAVE_PARALLEL_RSP = 1
-		HAVE_PARALLEL_RDP = 1
+		HAVE_PARALLEL_RSP = 0
+		HAVE_PARALLEL_RDP = 0
 		HAVE_THR_AL = 1
 		LLE = 1
 		WITH_DYNAREC=
@@ -444,7 +444,7 @@ else ifneq (,$(findstring ios,$(platform)))
 		GLES3=1
 		FORCE_GLES3=1
 		EGL := 0
-		HAVE_PARALLEL_RDP = 1
+		HAVE_PARALLEL_RDP = 0
 		PLATCFLAGS += -DHAVE_POSIX_MEMALIGN -DIOS -DOS_IOS
 		PLATCFLAGS += -Ofast -ffast-math -funsafe-math-optimizations -DNO_ASM
 		COREFLAGS  += -Ofast -ffast-math -funsafe-math-optimizations -DNO_ASM
@@ -489,8 +489,8 @@ else ifneq (,$(findstring tvos,$(platform)))
    GLES3=1
    FORCE_GLES3=1
    EGL := 0
-   HAVE_PARALLEL_RSP = 1
-   HAVE_PARALLEL_RDP = 1
+   HAVE_PARALLEL_RSP = 0
+   HAVE_PARALLEL_RDP = 0
    HAVE_THR_AL = 1
    LLE = 1
    PLATCFLAGS += -DHAVE_POSIX_MEMALIGN -DIOS -DOS_IOS
@@ -594,8 +594,8 @@ else
       ASFLAGS = -f win32 -d WIN32 -d LEADING_UNDERSCORE
    endif
 
-   HAVE_PARALLEL_RSP = 1
-   HAVE_PARALLEL_RDP = 1
+   HAVE_PARALLEL_RSP = 0
+   HAVE_PARALLEL_RDP = 0
    HAVE_THR_AL = 1
    LLE = 1
    COREFLAGS += -DOS_WINDOWS -DMINGW -DUNICODE
